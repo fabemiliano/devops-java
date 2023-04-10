@@ -53,4 +53,9 @@ public class Employee {
 		// TODO Auto-generated method stub
 		
 	}
+
+	public static Object builder() {
+		// TODO Auto-generated method stub
+		return null;
+	}
 }

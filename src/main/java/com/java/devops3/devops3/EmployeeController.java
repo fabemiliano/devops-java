@@ -4,6 +4,8 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import io.micrometer.core.annotation.Timed;
+
 import java.util.List;
 
 @RestController
@@ -18,11 +20,13 @@ public class EmployeeController {
 
     @PostMapping
     @ResponseStatus(HttpStatus.CREATED)
+    @Timed(value = "post", description = "Tempo para fazer um post")
     public Employee createEmployee(@RequestBody Employee employee){
         return employeeService.saveEmployee(employee);
     }
 
     @GetMapping
+    @Timed(value = "get", description = "Tempo para fazer um get")
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
     }

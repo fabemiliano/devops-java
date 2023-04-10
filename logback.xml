@@ -1,0 +1,13 @@
+<appender name="PAPERTRAIL" class="org.productivity.java.syslog4j.impl.net.tcp.ssl.SSLTCPNetSyslogAppender">
+  <syslogHost>logs6.papertrailapp.com.papertrailapp.com</syslogHost>
+  <syslogPort>47584</syslogPort>
+  <ssl>true</ssl>
+  <facility>LOCAL0</facility>
+  <layout class="ch.qos.logback.classic.PatternLayout">
+    <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %contextName [%thread] %-5level %logger{36} - %msg%n</pattern>
+  </layout>
+</appender>
+
+<root level="info">
+  <appender-ref ref="PAPERTRAIL"/>
+</root>

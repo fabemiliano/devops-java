@@ -1,5 +1,8 @@
 package com.java.devops3.devops3;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Configuration;
+
 import io.opentelemetry.exporter.zipkin.ZipkinExporter;
 import io.opentelemetry.exporter.zipkin.ZipkinExporterBuilder;
 import io.opentelemetry.sdk.autoconfigure.OpenTelemetrySdkAutoConfiguration;

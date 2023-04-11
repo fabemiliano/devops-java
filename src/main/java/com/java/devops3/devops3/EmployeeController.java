@@ -5,17 +5,21 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import io.micrometer.core.annotation.Timed;
+import io.opentelemetry.api.trace.Tracer;
 
 import java.util.List;
 
 @RestController
 @RequestMapping("/api/employees")
 public class EmployeeController {
+	
+	private final Tracer tracer;
 
     private EmployeeService employeeService;
 
-    public EmployeeController(EmployeeService employeeService) {
-        this.employeeService = employeeService;
+    public EmployeeController(EmployeeService employeeService, Tracer tracer) {
+        this.tracer = tracer;
+		this.employeeService = employeeService;
     }
 
     @PostMapping
@@ -29,6 +33,7 @@ public class EmployeeController {
     @Timed(value = "get", description = "Tempo para fazer um get")
     public List<Employee> getAllEmployees(){
         return employeeService.getAllEmployees();
+        
     }
 
     @GetMapping("{id}")
